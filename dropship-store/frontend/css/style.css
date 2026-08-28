@@ -1,0 +1,247 @@
+/* ============================================================
+   Design tokens — "manifest" theme: inspired by shipping labels,
+   customs stamps, and cargo manifests (fitting for a dropship store).
+   ============================================================ */
+:root {
+  --ink: #1B2A4A;         /* deep navy — headings, primary text */
+  --paper: #F2F1EC;       /* warm manifest paper */
+  --paper-raised: #FFFFFF;
+  --tape: #E2A33D;        /* amber shipping-tape accent */
+  --teal: #1F6F6B;        /* secondary accent — confirmed/success states */
+  --rust: #B4472C;        /* error / urgent */
+  --line: #D8D4C8;        /* hairline rules */
+  --muted: #6B7280;
+
+  --font-display: 'Space Grotesk', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em; margin: 0 0 .4em; }
+
+a { color: inherit; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: 4px solid var(--tape);
+}
+.site-header .logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--paper);
+}
+.site-header .logo span { color: var(--tape); }
+.site-header nav a {
+  color: var(--paper);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 0.92rem;
+}
+.site-header nav a:hover { color: var(--tape); }
+
+.cart-count {
+  display: inline-block;
+  background: var(--tape);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  text-align: center;
+  margin-left: 0.4rem;
+}
+
+/* ---------- Layout ---------- */
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+.hero {
+  padding: 3.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px dashed var(--line);
+}
+.hero h1 { font-size: 2.4rem; max-width: 640px; margin: 0 auto 0.6rem; }
+.hero p { color: var(--muted); max-width: 480px; margin: 0 auto; }
+
+/* ---------- Product grid ---------- */
+.filters {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.filters input, .filters select {
+  font-family: var(--font-body);
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper-raised);
+}
+.filters input { flex: 1; min-width: 200px; }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.product-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(27,42,74,0.1); }
+.product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: var(--line); }
+.product-card .card-body { padding: 0.9rem 1rem 1.1rem; }
+.product-card .card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+.product-card .card-price { font-family: var(--font-mono); font-weight: 700; color: var(--teal); }
+
+/* Signature element: stamped "manifest tag" corner label */
+.product-card { position: relative; }
+.manifest-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.btn-primary { background: var(--tape); color: var(--ink); }
+.btn-primary:hover { background: #cf9330; }
+.btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn-block { width: 100%; text-align: center; }
+
+/* ---------- Product detail ---------- */
+.product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+.product-detail img { width: 100%; border-radius: 6px; border: 1px solid var(--line); }
+.product-detail .price { font-family: var(--font-mono); font-size: 1.6rem; color: var(--teal); font-weight: 700; margin: 0.6rem 0 1.2rem; }
+.shipping-note {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 1px dashed var(--line);
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  margin-top: 1.2rem;
+  color: var(--muted);
+}
+
+/* ---------- Cart / Checkout ---------- */
+.cart-line {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.cart-line img { width: 64px; height: 64px; object-fit: cover; border-radius: 4px; }
+.cart-line .grow { flex: 1; }
+.cart-line input[type=number] { width: 50px; padding: 0.3rem; border: 1px solid var(--line); border-radius: 4px; }
+
+.cart-summary {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.2rem;
+  background: var(--paper-raised);
+}
+.cart-summary .row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-family: var(--font-mono); font-size: 0.9rem; }
+.cart-summary .total { font-weight: 700; font-size: 1.1rem; border-top: 1px dashed var(--line); padding-top: 0.6rem; margin-top: 0.6rem; }
+
+.checkout-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: start; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; }
+.form-group input, .form-row select {
+  width: 100%; padding: 0.6rem 0.7rem; border: 1px solid var(--line); border-radius: 4px; font-family: var(--font-body);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+#card-element { padding: 0.8rem; border: 1px solid var(--line); border-radius: 4px; background: var(--paper-raised); }
+
+.error-text { color: var(--rust); font-size: 0.85rem; margin-top: 0.4rem; }
+.success-box {
+  border: 1px solid var(--teal);
+  background: #eef6f5;
+  color: var(--teal);
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* ---------- Admin ---------- */
+.admin-panel { max-width: 720px; margin: 0 auto; }
+table.admin-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+table.admin-table th, table.admin-table td {
+  text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--line); font-size: 0.88rem;
+}
+table.admin-table th { font-family: var(--font-mono); text-transform: uppercase; font-size: 0.7rem; color: var(--muted); }
+.status-pill {
+  font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase;
+  padding: 0.15rem 0.5rem; border-radius: 3px; background: var(--line);
+}
+.status-pill.paid { background: #dcefee; color: var(--teal); }
+.status-pill.pending_payment { background: #f4e3d0; color: #8a5a1d; }
+.status-pill.fulfilling, .status-pill.fulfilled, .status-pill.shipped { background: #dceee0; color: #276d3f; }
+.status-pill.cancelled, .status-pill.refunded { background: #f4dcd8; color: var(--rust); }
+
+.tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.tabs button {
+  background: none; border: none; padding: 0.7rem 1rem; cursor: pointer; font-weight: 600; color: var(--muted);
+  border-bottom: 2px solid transparent; font-family: var(--font-body);
+}
+.tabs button.active { color: var(--ink); border-bottom-color: var(--tape); }
+
+footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; }
+
+@media (max-width: 720px) {
+  .product-detail, .checkout-grid { grid-template-columns: 1fr; }
+}

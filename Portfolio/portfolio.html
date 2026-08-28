@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jubair Bin Amin | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #F7F5F0;
+    --surface:   #FFFFFF;
+    --surface2:  #EEF0FF;
+    --accent:    #4F46E5;
+    --accent2:   #F97316;
+    --accent3:   #10B981;
+    --text:      #111827;
+    --muted:     #6B7280;
+    --border:    #E5E7EB;
+    --shadow:    0 4px 24px rgba(79,70,229,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  }
+
+  nav .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+
+  nav ul { list-style: none; display: flex; gap: 35px; }
+  nav ul li a { color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--accent); text-decoration: none; }
+
+  /* ===== HERO ===== */
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 90px 8% 80px;
+    gap: 50px;
+    background: linear-gradient(135deg, #F7F5F0 0%, #EEF0FF 60%, #FFF7ED 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* decorative circles */
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%);
+    top: -100px; right: -80px;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(249,115,22,0.10) 0%, transparent 70%);
+    bottom: -60px; left: 60px;
+    pointer-events: none;
+  }
+
+  .hero-text { flex: 1; min-width: 280px; position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--surface2);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+
+  .hero-text h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+    color: var(--text);
+  }
+
+  .hero-text h1 .name {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-text p {
+    color: var(--muted);
+    font-size: 1.08rem;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 13px 30px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-right: 14px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(79,70,229,0.30);
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(79,70,229,0.35); text-decoration: none; }
+
+  .btn.outline {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    box-shadow: none;
+  }
+  .btn.outline:hover { background: var(--surface2); }
+
+  .hero-img { flex: 1; min-width: 260px; display: flex; justify-content: center; position: relative; z-index: 1; }
+
+  /* photo ring with gradient border */
+  .hero-img .photo-ring {
+    width: 290px; height: 290px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    box-shadow: 0 16px 48px rgba(79,70,229,0.25);
+  }
+  .hero-img .photo-ring img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--surface);
+    display: block;
+    background: var(--surface2);
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 80px 8%; }
+  .alt-bg { background: var(--surface); }
+
+  section h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+
+  section h2 .underline-accent {
+    display: inline-block;
+    position: relative;
+  }
+  section h2 .underline-accent::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-content {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.08rem;
+  }
+  .about-content strong { color: var(--text); font-weight: 700; }
+
+  /* ===== SKILLS ===== */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .skill-tag {
+    background: var(--surface);
+    color: var(--accent);
+    border: 2px solid var(--border);
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.93rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .skill-tag:hover {
+    background: var(--surface2);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ===== PROJECTS ===== */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(79,70,229,0.13);
+  }
+
+  .project-card img { width: 100%; height: 185px; object-fit: cover; display: block; }
+
+  .project-info { padding: 22px; }
+  .project-info h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .project-info p { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; line-height: 1.6; }
+
+  .project-links { display: flex; gap: 14px; }
+  .project-links a {
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 6px 16px;
+    border-radius: 8px;
+    background: var(--surface2);
+    color: var(--accent);
+    transition: background 0.18s;
+  }
+  .project-links a:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+  /* ===== CONTACT ===== */
+  .contact-content {
+    max-width: 580px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-content p { color: var(--muted); margin-bottom: 28px; font-size: 1.05rem; }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .social-links a {
+    padding: 10px 22px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text);
+    background: var(--surface);
+    transition: all 0.2s;
+  }
+  .social-links a:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 28px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.88rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    nav ul { gap: 16px; font-size: 0.88rem; }
+    .hero-text h1 { font-size: 2.2rem; }
+    .hero { padding: 60px 6% 50px; }
+    section { padding: 60px 6%; }
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Jubair Bin Amin</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-eyebrow">CS Undergrad · Builder · Creator</span>
+      <h1>Hi, I'm <span class="name">Jubair Bin Amin</span></h1>
+      <p>A Computer Science undergrad passionate about building creative digital solutions. Currently exploring web development, AI, and design.</p>
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="#contact" class="btn outline">Contact Me</a>
+    </div>
+    <div class="hero-img">
+      <div class="photo-ring">
+        <img src="portfolioprofileimage.jpg" alt="Jubair Bin Amin">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="alt-bg">
+    <h2><span class="underline-accent">About Me</span></h2>
+    <div class="about-content">
+      <p>
+        I'm a second-year undergraduate at <strong>Bangladesh University</strong>, majoring in Computer Science and Engineering.
+        I love turning ideas into real, working products — whether that's a web app, a research project, or
+        a design experiment. Outside of academics, I enjoy reading and traveling, and I'm always looking for
+        new opportunities to learn and collaborate.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2><span class="underline-accent">Skills</span></h2>
+    <div class="skills-grid">
+      <span class="skill-tag">HTML / CSS</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">C++</span>
+      <span class="skill-tag">C</span>
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Git / GitHub</span>
+      <span class="skill-tag">SQL</span>
+    </div>
+  </section>
+
+  <section id="projects" class="alt-bg">
+    <h2><span class="underline-accent">Projects</span></h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <img src="https://via.placeholder.com/300x185/EEF0FF/4F46E5?text=Project+1" alt="Project 1">
+        <div class="project-info">
+          <h3>Project Title One</h3>
+          <p>Short description of what this project does and what technologies you used to build it.</p>
+          <div class="project-links">
+            <a href="https://github.com/JBAmin" target="_blank">GitHub</a>
+            <a href="#" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://via.placeholder.com/300x185/FFF7ED/F97316?text=Project+2" alt="Project 2">
+        <div class="project-info">
+          <h3>Project Title Two</h3>
+          <p>Short description of what this project does and what technologies you used to build it.</p>
+          <div class="project-links">
+            <a href="https://github.com/JBAmin" target="_blank">GitHub</a>
+            <a href="#" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://via.placeholder.com/300x185/ECFDF5/10B981?text=Project+3" alt="Project 3">
+        <div class="project-info">
+          <h3>Project Title Three</h3>
+          <p>Short description of what this project does and what technologies you used to build it.</p>
+          <div class="project-links">
+            <a href="https://github.com/JBAmin" target="_blank">GitHub</a>
+            <a href="#" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><span class="underline-accent">Get In Touch</span></h2>
+    <div class="contact-content">
+      <p>I'm currently open to internships, collaborations, and new opportunities. Feel free to reach out!</p>
+      <a href="mailto:jubair.b.amin@gmail.com" class="btn">Email Me</a>
+      <div class="social-links">
+        <a href="https://github.com/JBAmin" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/jubair-amin-631570425/" target="_blank">LinkedIn</a>
+        <a href="https://www.facebook.com/Jubair.B.Amin" target="_blank">Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Jubair Bin Amin. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

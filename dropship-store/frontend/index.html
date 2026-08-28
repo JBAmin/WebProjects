@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cargo & Co. — Curated Finds, Shipped Direct</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo">CARGO<span>&</span>CO.</a>
+  <nav>
+    <a href="/">Shop</a>
+    <a href="/cart.html">Cart<span id="cart-count" class="cart-count" style="display:none">0</span></a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">Manifest №1 — New arrivals weekly</p>
+  <h1>Sourced from the world's workshops. Shipped straight to your door.</h1>
+  <p>Every item on this manifest ships directly from our supplier network — no warehouse markup, no middleman delay.</p>
+</section>
+
+<main class="container">
+  <div class="filters">
+    <input type="text" id="search-input" placeholder="Search the manifest…">
+    <select id="category-select">
+      <option value="">All categories</option>
+    </select>
+  </div>
+
+  <div id="product-grid" class="product-grid">
+    <p class="eyebrow">Loading manifest…</p>
+  </div>
+</main>
+
+<footer>Cargo & Co. — a demo storefront scaffold. Not affiliated with AliExpress, Amazon, eBay, or Shopify.</footer>
+
+<script src="js/api.js"></script>
+<script src="js/store.js"></script>
+</body>
+</html>
